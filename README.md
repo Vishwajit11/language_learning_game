@@ -11,7 +11,8 @@ Learneasy - platform for users who wants to learn languages by solving simple qu
 
 4.leaderboard page:this page is avaialbe on index page after clicking on navabar on this page users test scores are arranged in rankings in table format
 
+note: I have used brute force method to create this project so all the compoents in the project are not dynamic and can be needed add code if want to add new language or test 
 note: In my project i have appnamed resume builder which is my sample setup for django project i used it to save time in basic project setup process and can focus on project functionlities
-note: In above all the mention features are for english language test but for hindi language test i cannot save testscore of user in database got some error there can could not solve baecuse of limite dtime but english 
-      language test score are saved in datbase can also used to setup leaderboard of users 
+note: In above all the mention features are for english language test but for hindi language test i cannot save testscore of user in database got some error there can could not solve baecuse of limite dtime but 
+     english language test score are saved in datbase can also used to setup leaderboard of users 
   
