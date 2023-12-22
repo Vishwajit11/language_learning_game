@@ -1,5 +1,7 @@
 Learneasy - platform for users who wants to learn languages by solving simple quizes
 
+How to run - Download and open in vscode then in terminal give this command - python manage.py runserver the link will get generated click on that link.
+
 1.Technologies used:HTML,CSS,Javascript,Bootstarp,python,Django,Sqlite
 
 2.Project Description and index page: In this project i have setup the login page and register page users data is stored in database after user loged in on index page there are options for user to choose languages 
