@@ -1,0 +1,201 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Grammar Quiz Test-2</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+    }
+    .quiz-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .options label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    .result-container {
+      margin-top: 20px;
+    }
+    #instructions {
+      background-color:  #fff; /* Lighter yellow background for instructions */
+      border: 2px solid #000; /* Black border */
+      padding: 15px;
+     
+      text-align: center;
+      border-radius: 10px; /* Rounded corners */
+      display: flex; /* Use flexbox to control alignment */
+      flex-direction: column; /* Arrange items in a column */
+      align-items: flex-start; /* Align items to the start of the container */
+    }
+  
+    #instructions p {
+      margin: 0; /* Remove default margin for paragraphs */
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="quiz-container">
+    <h2>English Grammar Quiz Test-3</h2>
+
+    <div class="container text-center" id="instructions">
+      <h2 style="font-size: 22px;" >Instructions:</h2>
+      <br>
+      <p>1. Choose the correct option from the available choices for each question.</p>
+      <p>2. Click on the 'Result' button after answering all the questions to view your score.</p>
+      <p>3. You will earn points for each correct answer.</p>
+      
+      <br>
+      <br>
+    </div>
+
+    <div id="question1" class="question">
+      <p>1. Which word is a synonym for "happy"? (1 points)</p>
+      <div class="options" id="options1">
+        <label><input type="radio" name="q1" value="a"> Sad</label>
+        <label><input type="radio" name="q1" value="b"> Joyful</label>
+        <label><input type="radio" name="q1" value="c"> Angry</label>
+        <label><input type="radio" name="q1" value="d"> Tired</label>
+      </div>
+    </div>
+
+    <div id="question2" class="question">
+      <p>2. What is the plural form of "mouse"? (1 points)</p>
+      <div class="options" id="options2">
+        <label><input type="radio" name="q2" value="a"> Mouses</label>
+        <label><input type="radio" name="q2" value="b"> Mice's</label>
+        <label><input type="radio" name="q2" value="c"> Mouse</label>
+        <label><input type="radio" name="q2" value="d"> Mice</label>
+      </div>
+    </div>
+
+    <div id="question3" class="question">
+      <p>3. Choose the correct preposition: "The cat is ____ the table." (1 point)</p>
+      <div class="options" id="options3">
+        <label><input type="radio" name="q3" value="a"> at</label>
+        <label><input type="radio" name="q3" value="b"> between</label>
+        <label><input type="radio" name="q3" value="c"> in</label>
+        <label><input type="radio" name="q3" value="d"> on</label>
+      </div>
+    </div>
+
+    <div id="question4" class="question">
+        <p>4. Choose the correct form of the verb: "They _______ to the concert last night." (1 point)</p>
+        <div class="options" id="options4">
+          <label><input type="radio" name="q4" value="a"> go</label>
+          <label><input type="radio" name="q4" value="b"> goes</label>
+          <label><input type="radio" name="q4" value="c"> gone</label>
+          <label><input type="radio" name="q4" value="d"> went</label>
+        </div>
+      </div>
+
+      <div id="question5" class="question">
+        <p>5.  Identify the type of sentence: "Have you finished your homework?" (1 point)</p>
+        <div class="options" id="options1">
+          <label><input type="radio" name="q5" value="a"> Interrogative</label>
+          <label><input type="radio" name="q5" value="b"> Declarative</label>
+          <label><input type="radio" name="q5" value="c"> Imperative</label>
+          <label><input type="radio" name="q5" value="d"> Exclamatory</label>
+        </div>
+      </div>
+    <br>
+
+    <button class="btn btn-primary" onclick="calculateScore()">Result</button>  <br>
+    
+    <div id="result" class="result-container"></div>
+    <br>
+
+    
+  </div>
+</div>
+
+<script>
+  function calculateScore() {
+    const answers = {
+      q1: "b",
+      q2: "b",
+      q3: "d",
+      q4: "a",
+      q5: "a"
+    };
+
+    const points = {
+      q1: 1,
+      q2: 1,
+      q3: 1,
+      q4: 2,
+      q5: 3
+    };
+
+    let score = 0;
+    let resultHTML = "";
+
+    for (let i = 1; i <= 5; i++) {
+      const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+
+      if (selectedOption) {
+        const userAnswer = selectedOption.value;
+
+        if (userAnswer === answers[`q${i}`]) {
+          score += points[`q${i}`];
+          resultHTML += `<p>Question ${i}: Correct! Points earned: ${points[`q${i}`]}</p>`;
+        } else {
+          resultHTML += `<p>Question ${i}: Incorrect. Correct option: ${answers[`q${i}`]}  </p>`;
+        }
+      } else {
+        resultHTML += `<p>Question ${i}: Not attempted. Correct option: ${answers[`q${i}`]} </p>`;
+      }
+    }
+
+    const resultContainer = document.getElementById("result");
+    resultContainer.innerHTML = `<h3>Your Score: ${score}/8</h3>${resultHTML}`;
+
+    // Get the saved username from the session (assuming it's stored in a variable)
+    var username2 = "{{ request.session.username }}"; 
+
+     // Result variable
+    var result2 = score;
+    var postData = {
+            username2: username2,
+            result2: result2
+        };
+        fetch('/test3e/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                // Add any other headers as needed
+            },
+            body: JSON.stringify(postData),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('POST request successful:', data);
+            // Handle the response from the backend if needed
+        })
+        .catch(error => {
+            console.error('POST request failed:', error);
+        });
+  }
+</script>
+
+
+</body>
+</html>

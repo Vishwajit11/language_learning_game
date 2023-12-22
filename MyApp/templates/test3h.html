@@ -1,0 +1,190 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hindi Grammar Quiz Test-3</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+    }
+    .quiz-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .options label {
+      display: block;
+      margin-bottom: 10px;
+    }
+    .result-container {
+      margin-top: 20px;
+    }
+    #instructions {
+        background-color:  #fff; /* Lighter yellow background for instructions */
+        border: 2px solid #000; /* Black border */
+        padding: 15px;
+       
+        text-align: center;
+        border-radius: 10px; /* Rounded corners */
+        display: flex; /* Use flexbox to control alignment */
+        flex-direction: column; /* Arrange items in a column */
+        align-items: flex-start; /* Align items to the start of the container */
+    }
+
+    #instructions p {
+    margin: 0; /* Remove default margin for paragraphs */
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="quiz-container">
+    <h2>Hindi Grammar Quiz Test-3</h2>
+      <div class="container text-center" id="instructions">
+        <h2 style="font-size: 22px;" >Instructions:</h2>
+        <br>
+        <p>1. Choose the correct option from the available choices for each question.</p>
+        <p>2. Click on the 'Result' button after answering all the questions to view your score.</p>
+        <p>3. You will earn points for each correct answer.</p>
+        
+        <br>
+        <br>
+      </div>
+
+
+    
+
+      <div id="question1" class="question">
+        <p>1. सर्दी में वे अपने दादी के साथ रहते हैं। (1 points)</p>
+        <div class="options" id="options1">
+          <label><input type="radio" name="q1" value="a">को,पर</label>
+          <label><input type="radio" name="q1" value="b">में,को</label>
+          <label><input type="radio" name="q1" value="c">में,साथ</label>
+          <label><input type="radio" name="q1" value="d">पर,साथ</label>
+        </div>
+      </div>
+
+      <div id="question2" class="question">
+        <p>2. वह रोज़ स्कूल जाता है और अच्छे ग्रेड्स प्राप्त करता है। (1 points)</p>
+        <div class="options" id="options2">
+          <label><input type="radio" name="q2" value="a">पर,को</label>
+          <label><input type="radio" name="q2" value="b">को,और</label>
+          <label><input type="radio" name="q2" value="c">और,पर</label>
+          <label><input type="radio" name="q2" value="d">और,को</label>
+        </div>
+      </div>
+
+      <div id="question3" class="question">
+        <p>3. मेरे दोस्त बहुत अच्छे गायक हैं और वे सभी संगीत सप्ताह में प्रतिस्पर्धा में भाग लेते हैं। (1 point)</p>
+        <div class="options" id="options3">
+          <label><input type="radio" name="q3" value="a">के,और</label>
+          <label><input type="radio" name="q3" value="b">के,को</label>
+          <label><input type="radio" name="q3" value="c">को,और</label>
+          <label><input type="radio" name="q3" value="d">के,पर</label>
+        </div>
+      </div>
+
+      <div id="question4" class="question">
+          <p>4. वहाँ एक छोटा सा बच्चा खेतों में खेल रहा है। (2 point)</p>
+          <div class="options" id="options1">
+            <label><input type="radio" name="q4" value="a">का,के</label>
+            <label><input type="radio" name="q4" value="b">की,में</label>
+            <label><input type="radio" name="q4" value="c">का,से</label>
+            <label><input type="radio" name="q4" value="d">सा,में</label>
+          </div>
+        </div>
+
+        <div id="question5" class="question">
+          <p>5. तुम कभी-कभी बहुत बड़ी बातें करते हो, लेकिन वे हमेशा सुनते हैं। (3 point)</p>
+          <div class="options" id="options3">
+            <label><input type="radio" name="q5" value="a">हमेशा,कभी-कभी</label>
+            <label><input type="radio" name="q5" value="b">कभी-कभी,लेकिन</label>
+            <label><input type="radio" name="q5" value="c">हमेशा,लेकिन</label>
+            <label><input type="radio" name="q5" value="d">कभी-कभी,हमेशा</label>
+          </div>
+        </div>
+        
+      <br>
+    
+
+    
+    
+
+    <!-- Your existing question and option rendering logic -->
+
+    <br>
+
+
+  
+    
+    <button class="btn btn-primary" onclick="calculateScore()">Result</button> 
+    
+    {% comment %} <button class="btn btn-primary" type="button" >Back</button>  {% endcomment %}
+    <br>
+      
+    
+    <div id="result" class="result-container"></div>
+    <br>
+
+    
+   
+  </div>
+</div>
+
+<script>
+  function calculateScore() {
+    const answers = {
+      q1: "b",
+      q2: "b",
+      q3: "c",
+      q4: "d",
+      q5: "d"
+    };
+
+    const points = {
+      q1: 1,
+      q2: 1,
+      q3: 1,
+      q4: 2,
+      q5: 3
+    };
+
+    let score = 0;
+    let resultHTML = "";
+
+    for (let i = 1; i <= 5; i++) {
+      const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+
+      if (selectedOption) {
+        const userAnswer = selectedOption.value;
+
+        if (userAnswer === answers[`q${i}`]) {
+          score += points[`q${i}`];
+          resultHTML += `<p>Question ${i}: Correct! Points earned: ${points[`q${i}`]}</p>`;
+        } else {
+          resultHTML += `<p>Question ${i}: Incorrect. Correct option: ${answers[`q${i}`]}  </p>`;
+        }
+      } else {
+        resultHTML += `<p>Question ${i}: Not attempted. Correct option: ${answers[`q${i}`]} </p>`;
+      }
+    }
+
+    const resultContainer = document.getElementById("result");
+    resultContainer.innerHTML = `<h3>Your Score: ${score}/8</h3>${resultHTML}`;
+
+  }
+</script>
+
+</body>
+</html>
+
